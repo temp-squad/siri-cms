@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+	<head>		
+		<title> Chatfully - administrators.php</title>
+
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	
+		<link href="favicon.ico" rel="shortcut icon" />
+	  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+	  <link href="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.min.css" rel="stylesheet">
+		
+		<style type="text/css" media="screen">
+			
+		</style>
+
+		<script type="text/javascript">
+
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+		  <v-app id="inspire">
+        <v-toolbar class="mb-2" color="indigo darken-5" dark flat>
+          <v-toolbar-title>
+          	ChatUserAdmin Management - The Base Phetkasem          </v-toolbar-title>
+        </v-toolbar>
+
+		  	<v-subheader>
+		  		Administrators
+		  	</v-subheader>
+		  			  	
+		    <v-data-table :headers="headers" :items="desserts" class="elevation-1">
+		      <template v-slot:items="props">
+		        <td> {{ props.item.adminUser }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.adminType }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.adminRole }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.adminPswd }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.adminCode }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.adminName }} </td>
+		        
+
+		        <td class="text-xs-center" nowrap> {{ props.item.deviceType }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.deviceToken }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.appToken }} </td>
+
+		        <td class="text-xs-center" nowrap> {{ props.item.bAutoReply }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.bNotify }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.bOffice }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.bActive }} </td>
+
+		        <td class="text-xs-center" nowrap> {{ props.item.userId }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.userName }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.passCode }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.nickName }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.property }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.residence }} </td>
+
+		        <td class="text-xs-center" nowrap>
+              <v-btn :href="'./admin-2vw.php?adminCode=' + props.item.adminCode" target="_self" color="warning" fab small dark>
+                <v-icon> search </v-icon>
+              </v-btn>
+              <v-btn :href="'./admin-2edt.php?adminCode=' + props.item.adminCode" target="_self" color="primary" fab small dark>
+                <v-icon> edit </v-icon>
+              </v-btn>
+              <!--
+              <v-btn :href="'./admin-2del.php?adminCode=' + props.item.adminCode" target="_self" fab small dark>
+                <v-icon> remove </v-icon>
+              </v-btn>
+              -->
+		        </td>
+		      </template>
+		    </v-data-table>
+		    
+	    	<div class="button">
+	    		<v-btn href="./admin-2add.php" color="error" small dark> Add new </v-btn>
+	    	</div>
+		  </v-app>
+		</div>
+	
+	  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.js"></script>
+	  <script>
+			new Vue({
+			  el: "#app",
+			  data () {
+			    return {
+			      headers: [
+			        {
+			          align: "center",
+			          sortable: false,
+			          value: "adminUser", text: "admin"
+			        },
+							{ value: "adminType", text: "type" },
+							{ value: "adminRole", text: "role" },
+							{ value: "adminPswd", text: "pswd" },
+							{ value: "adminCode", text: "code" },
+							{ value: "adminName", text: "name" },
+
+							{ value: "deviceType", text: "device" },
+							{ value: "deviceToken", text: "token" },
+							{ value: "appToken", text: "app" },
+
+							{ value: "bAutoReply", text: "auto-reply" },
+							{ value: "bNotify", text: "notify" },
+							{ value: "bOffice", text: "office" },
+							{ value: "bActive", text: "active" },
+
+							{ value: "userId", text: "userId" },
+							{ value: "userName", text: "userName" },
+							{ value: "passCode", text: "passCode" },
+							{ value: "nickName", text: "nickName" },
+							{ value: "property", text: "property" },
+							{ value: "residence", text: "residence" },
+							
+							{ value: "actions", text: "action(s)" }
+			        
+			      ],
+			      desserts: [
+						 { 
+						 adminUser: 'xabber',
+						 adminType: 'Administrator',
+						 adminRole: 'Administrator',
+						 adminPswd: 'xbbx1234',
+						 adminCode: 'xbbx1314xbbx',
+						 adminName: 'Xabber Xabber',
+						 deviceType: 'iPhone',
+						 deviceToken: 'xbbx1314xbbx',
+						 appToken: 'xbbx1314xbbx',
+						 bAutoReply: 'Y',
+						 bNotify: 'Y',
+						 bOffice: 'Y',
+						 bActive: 'Y',
+						 userId: '10203001',
+						 userName: 'kwokkitlee',
+						 passCode: '123kkl456',
+						 nickName: 'Lee Kwok Kit',
+						 property: '110',
+						 residence: '0',
+						 property: '110',
+						 residence: '0',
+						 }, 
+			      ]
+			    }
+			  }
+			})
+	  </script>
+	</body>
+</html>

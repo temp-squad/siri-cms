@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+	<head>		
+		<title> Chatfully - users.php</title>
+
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	
+		<link href="favicon.ico" rel="shortcut icon" />
+	  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+	  <link href="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.min.css" rel="stylesheet">
+		
+		<style type="text/css" media="screen">
+			
+		</style>
+
+		<script type="text/javascript">
+
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+		  <v-app id="inspire">
+        <v-toolbar class="mb-2" color="indigo darken-5" dark flat>
+          <v-toolbar-title>
+          	ChatUser Management
+          </v-toolbar-title>
+        </v-toolbar>
+
+		  	<v-subheader>
+		  		Chat users
+		  	</v-subheader>
+
+		    <v-data-table :headers="headers" :items="desserts" class="elevation-1">
+		      <template v-slot:items="props">
+		        <td> {{ props.item.userId }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.userName }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.userType }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.userRole }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.passWord }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.passCode }} </td>
+		        
+		        <td class="text-xs-center" nowrap> {{ props.item.deviceType }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.deviceToken }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.appToken }} </td>
+
+		        <td class="text-xs-center" nowrap> {{ props.item.nickName }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.property }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.residence }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.regCount }} </td>
+
+		        <td class="text-xs-center" nowrap> {{ props.item.bNotify }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.bActive }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.bOnline }} </td>
+		        <td class="text-xs-center" nowrap> {{ props.item.dtmOnlineOn }} </td>
+
+		        <td class="text-xs-center" nowrap>
+              <!--
+              <v-btn :href="'./user-2vw.php?passCode=' + props.item.passCode" target="_self" color="warning" fab small dark>
+                <v-icon> search </v-icon>
+              </v-btn>
+              -->
+              <v-btn :href="'./user-2edt.php?passCode=' + props.item.passCode" target="_self" color="primary" fab small dark>
+                <v-icon> edit </v-icon>
+              </v-btn>
+              <!--
+              <v-btn :href="'./user-2del.php?passCode=' + props.item.passCode" target="_self" fab small dark>
+                <v-icon> remove </v-icon>
+              </v-btn>
+              -->
+		        </td>
+		      </template>
+		    </v-data-table>
+		    
+	    	<div class="button">
+	    		<v-btn href="./user-2add.php" color="error" small dark> Add new </v-btn>
+	    	</div>
+		  </v-app>
+		</div>
+	
+	  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.js"></script>
+	  <script>
+			new Vue({
+			  el: '#app',
+			  data () {
+			    return {
+			      headers: [
+			        {
+			          align: "center",
+			          sortable: false,
+			          value: "userId", text: "user"
+			        },
+							{ value: "userName", text: "userName" },
+							{ value: "userType", text: "type" },
+							{ value: "userRole", text: "role" },
+							{ value: "passWord", text: "pswd" },
+							{ value: "passCode", text: "code" },
+
+							{ value: "deviceType", text: "device" },
+							{ value: "deviceToken", text: "token" },
+							{ value: "appToken", text: "app" },
+
+							{ value: "nickName", text: "nickName" },
+							{ value: "property", text: "property" },
+							{ value: "residence", text: "residence" },
+							{ value: "regCount", text: "regCount" },
+
+							{ value: "bNotify", text: "notify" },
+							{ value: "bActive", text: "active" },
+							{ value: "bOnline", text: "online" },
+							{ value: "dtmOnlineOn", text: "dtm at" },
+							
+							{ value: "actions", text: "action(s)" }
+			      ],
+			      desserts: [
+						 { 
+						 userId: '10203002',
+						 userName: 'gabrielkwong',
+						 userType: 'General user',
+						 userRole: '',
+						 passWord: '123456',
+						 passCode: 'gk1234gk',
+						 deviceType: '(unknown)',
+						 deviceToken: '9876543210',
+						 appToken: '9876543210',
+						 nickName: 'Gabriel Kwong',
+						 property: '0',
+						 residence: '0',
+						 regCount: '1',
+						 bNotify: 'Y',
+						 bActive: 'Y',
+						 bOnline: 'Y',
+						 dtmOnlineOn: '2020-02-24 21:05:13',
+						 }, 
+						 { 
+						 userId: '10203003',
+						 userName: 'denischow',
+						 userType: 'General user',
+						 userRole: '',
+						 passWord: '123456',
+						 passCode: 'dcdcdc',
+						 deviceType: '(unknown)',
+						 deviceToken: 'dc00cd00dc',
+						 appToken: 'dc00cd00dc',
+						 nickName: 'Denis Chow',
+						 property: '0',
+						 residence: '0',
+						 regCount: '1',
+						 bNotify: 'Y',
+						 bActive: 'Y',
+						 bOnline: 'Y',
+						 dtmOnlineOn: '2020-02-07 13:52:18',
+						 }, 
+						 { 
+						 userId: '10203004',
+						 userName: 'michaelchu',
+						 userType: 'General user',
+						 userRole: '',
+						 passWord: '123456',
+						 passCode: 'ml13579ml',
+						 deviceType: '(unknown)',
+						 deviceToken: '1357924680',
+						 appToken: '1357924680',
+						 nickName: 'Michael Chu',
+						 property: '0',
+						 residence: '0',
+						 regCount: '1',
+						 bNotify: 'Y',
+						 bActive: 'Y',
+						 bOnline: 'Y',
+						 dtmOnlineOn: '2020-04-19 21:08:51',
+						 }, 
+						 { 
+						 userId: '10203005',
+						 userName: 'masongreen',
+						 userType: 'General user',
+						 userRole: '',
+						 passWord: 'msg147369',
+						 passCode: '56a696fe9cd1dd69',
+						 deviceType: '(unknown)',
+						 deviceToken: 'msg147369',
+						 appToken: 'msg147369',
+						 nickName: 'Mason Greenwood',
+						 property: '0',
+						 residence: '0',
+						 regCount: '0',
+						 bNotify: 'Y',
+						 bActive: 'Y',
+						 bOnline: 'Y',
+						 dtmOnlineOn: '',
+						 }, 
+						 { 
+						 userId: '10203006',
+						 userName: 'xabber',
+						 userType: 'General user',
+						 userRole: '',
+						 passWord: 'xbbx1234',
+						 passCode: '9aa0f4296d8b1936',
+						 deviceType: '(unknown)',
+						 deviceToken: 'xbbx1234',
+						 appToken: 'xbbx1234',
+						 nickName: 'Xabber xBBx',
+						 property: '0',
+						 residence: '0',
+						 regCount: '0',
+						 bNotify: 'N',
+						 bActive: 'Y',
+						 bOnline: 'N',
+						 dtmOnlineOn: '',
+						 }, 
+						 { 
+						 userId: '10203007',
+						 userName: 'natalie',
+						 userType: 'General user',
+						 userRole: 'General user',
+						 passWord: '',
+						 passCode: '40bb3b9fb715c4a4',
+						 deviceType: '(unknown)',
+						 deviceToken: '',
+						 appToken: '',
+						 nickName: 'Natalie',
+						 property: '0',
+						 residence: '0',
+						 regCount: '0',
+						 bNotify: 'Y',
+						 bActive: 'Y',
+						 bOnline: 'N',
+						 dtmOnlineOn: '',
+						 }, 
+						 { 
+						 userId: '10203008',
+						 userName: 'whoami',
+						 userType: 'General user',
+						 userRole: 'General user',
+						 passWord: '',
+						 passCode: 'whoamiiamwho',
+						 deviceType: '(unknown)',
+						 deviceToken: '',
+						 appToken: '',
+						 nickName: 'Who Am I',
+						 property: '0',
+						 residence: '0',
+						 regCount: '0',
+						 bNotify: 'N',
+						 bActive: 'Y',
+						 bOnline: 'N',
+						 dtmOnlineOn: '',
+						 }, 
+			      ]
+			    }
+			  }
+			})
+	  </script>
+	</body>
+</html>
