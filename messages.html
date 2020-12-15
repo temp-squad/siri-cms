@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ข้อความ</title>
+
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+    <style>
+      * {
+        font-family: " Roboto";
+      }
+
+      .bg-gray-4 {
+        background: #fafafa;
+      }
+      .bg-white {
+        background: white;
+      }
+
+      .h-100 {
+        height: 100%;
+      }
+
+      .border-1 {
+        border: 1px solid #e5e5e5;
+      }
+
+      .position-relative {
+        position: relative;
+      }
+
+      .messages-container {
+        background-image: url("./images/no-message.svg");
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-4">
+    <div id="app">
+      <v-app>
+        <v-main>
+          <v-navigation-drawer app class="bg-white">
+            <img class="brand-logo" src="images/brand-logo.png" alt="image" />
+            <v-list dense flat>
+              <v-list-item-group color="primary">
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>ประกาศ</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-group>
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title> ข้อความ </v-list-item-title>
+                    </v-list-item-content>
+                  </template>
+
+                  <v-list-item>
+                    <v-list-item-title> Dashboard </v-list-item-title>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-title> Chat </v-list-item-title>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-title> Broadcast </v-list-item-title>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-title> Auto Reply </v-list-item-title>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                  </v-list-item>
+
+                  <v-list-item>
+                    <v-list-item-title> Keyword Reply </v-list-item-title>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                  </v-list-item>
+                </v-list-group>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>กล่องรับของ</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>โฮมแคร์</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>ตั้งค่า</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>คู่มือ HSA</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-navigation-drawer>
+          <v-container fluid class="bg-gray-4 h-100" style="">
+            <v-toolbar dense flat>
+              <v-app-bar-nav-icon></v-app-bar-nav-icon>
+              <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
+            </v-toolbar>
+            <v-row class="h-100">
+              <v-col class="">
+                <v-card flat class="pa-4 position-relative h-100">
+                  <div class="d-flex justify-space-between align-center">
+                    <h1>Auto Reply Mode</h1>
+                    <v-switch flat></v-switch>
+                  </div>
+                  <p>
+                    By turning this on. You will stop receiving messages from
+                    resident and start sending auto reply messages
+                  </p>
+                  <div class="pa-4 border-1 h-100">
+                    <v-form class="h-100">
+                      <h4>Title Name</h4>
+                      <v-text-field
+                        required
+                        placeholder="Enter title name"
+                      ></v-text-field>
+
+                      <h4>Message</h4>
+                      <v-textarea
+                        auto-grow
+                        outlined
+                        placeholder="Enter your message"
+                      ></v-textarea>
+
+                      <h4>Select Day to Send Message</h4>
+                      <v-row>
+                        <v-col>
+                          <v-checkbox label="Everyday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Monday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Tuesday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Wednesday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Thursday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Friday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Saturday"></v-checkbox>
+                        </v-col>
+                        <v-col>
+                          <v-checkbox label="Sunday"></v-checkbox>
+                        </v-col>
+                      </v-row>
+                      <h4>Select time to Send Message</h4>
+                      <v-row>
+                        <v-col>
+                          <v-menu
+                            ref="menu"
+                            v-model="endTimeMenu"
+                            :close-on-content-click="false"
+                            :nudge-right="40"
+                            :return-value.sync="endTime"
+                            transition="scale-transition"
+                            offset-y
+                            max-width="116px"
+                            min-width="116px"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-text-field
+                                v-model="endTime"
+                                label="End time"
+                                prepend-icon="mdi-clock-time-four-outline"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                              ></v-text-field>
+                            </template>
+                            <v-time-picker
+                              v-if="startTimeMenu"
+                              v-model="startTime"
+                              full-width
+                              @click:minute="$refs.menu.save(startTime)"
+                            ></v-time-picker>
+                          </v-menu>
+                        </v-col>
+                        <v-col>
+                          <v-menu
+                            ref="menu"
+                            v-model="startTimeMenu"
+                            :close-on-content-click="false"
+                            :nudge-right="40"
+                            :return-value.sync="startTime"
+                            transition="scale-transition"
+                            offset-y
+                            max-width="116px"
+                            min-width="116px"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-text-field
+                                v-model="time"
+                                label="Start time"
+                                prepend-icon="mdi-clock-time-four-outline"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                              ></v-text-field>
+                            </template>
+                            <v-time-picker
+                              v-if="startTimeMenu"
+                              v-model="startTime"
+                              full-width
+                              @click:minute="$refs.menu.save(startTime)"
+                            ></v-time-picker>
+                          </v-menu>
+                        </v-col>
+                      </v-row>
+
+                      <v-row justify="end" class="mr-1">
+                        <v-btn color="primary">Create</v-btn>
+                      </v-row>
+                    </v-form>
+                  </div>
+                </v-card>
+              </v-col>
+              <v-col sm="3">
+                <v-card flat class="pa-3 h-100">
+                  <v-row aligns="center">
+                    <v-col>
+                      <h4>Auto Reply Message</h4>
+                    </v-col>
+                    <v-col>
+                      <v-btn text color="primary">New Message</v-btn>
+                    </v-col>
+                  </v-row>
+                  <div class="messages-container h-100"></div>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        data() {
+          return {
+            startTime: null,
+            startTimeMenu: false,
+            endTime: null,
+            endTimeMenu: false,
+            items: [{ icon: "", title: "ประกาศ" }],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
