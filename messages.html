@@ -49,6 +49,13 @@
       .messages-container {
         background-image: url("./images/no-message.svg");
       }
+
+      .reply-message__card {
+        color: white !important;
+        padding: 12px 16px;
+        display: flex;
+        justify-content: space-between;
+      }
     </style>
   </head>
 
@@ -197,12 +204,14 @@
                     <v-form class="h-100">
                       <h4>Title Name</h4>
                       <v-text-field
+                        v-model="title"
                         required
                         placeholder="Enter title name"
                       ></v-text-field>
 
                       <h4>Message</h4>
                       <v-textarea
+                        v-model="message"
                         auto-grow
                         outlined
                         placeholder="Enter your message"
@@ -300,7 +309,7 @@
                       </v-row>
 
                       <v-row justify="end" class="mr-1">
-                        <v-btn color="primary">Create</v-btn>
+                        <v-btn color="primary" @click="submit">Create</v-btn>
                       </v-row>
                     </v-form>
                   </div>
@@ -316,7 +325,12 @@
                       <v-btn text color="primary">New Message</v-btn>
                     </v-col>
                   </v-row>
-                  <div class="messages-container h-100"></div>
+                  <div class="messages-container h-100">
+                    <v-card class="reply-message__card" color="primary" v-for="replyMessage in replyMessages" :key="replyMessage.title">
+                      {{ replyMessage.title }}
+                      <v-icon color="white">mdi-delete</v-icon>
+                    </v-card>
+                  </div>
                 </v-card>
               </v-col>
             </v-row>
@@ -328,18 +342,55 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script>
+      function ReplyMessage(title, message, days, startTime, endTime) {
+        this.title = title
+        this.message = message
+        this.days = days || ['Everyday']
+        this.startTime = startTime
+        this.endTime = endTime
+      }
+
+      const MODE = {
+        CREATE: 'create',
+        EDIT: 'edit'
+      }
+
       new Vue({
         el: "#app",
         vuetify: new Vuetify(),
         data() {
           return {
+            mode: MODE.CREATE,
             startTime: null,
             startTimeMenu: false,
             endTime: null,
+            title: '',
+            message: '',
             endTimeMenu: false,
             items: [{ icon: "", title: "ประกาศ" }],
+            replyMessages: []
           };
         },
+        methods: {
+          submit() {
+            const index = this.replyMessages.findIndex(r => r.title === this.title)
+            if (index >= 0) {
+              return
+            }
+
+            const replyMessage = new ReplyMessage(this.title, this.message, this.days, this.startTime, this.endTime)
+
+
+            if (this.mode === MODE.CREATE) {
+              this.replyMessages.push(replyMessage)
+            }
+
+            if (this.mode === MODE.EDIT) {
+
+              this.replyMessage[index] = replyMessage
+            }
+          }
+        }
       });
     </script>
   </body>
