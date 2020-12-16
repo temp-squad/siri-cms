@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ข้อความ</title>
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+
+    <link href="./stylesheets/global.css" rel="stylesheet" />
+    <link href="./stylesheets/colors.css" rel="stylesheet" />
+    <link href="./stylesheets/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="./stylesheets/fonts.css" rel="stylesheet" />
+    <link href="./stylesheets/messages.css" rel="stylesheet" />
+    <link href="./stylesheets/vuetify.min.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-gray-4">
+    <div id="app">
+      <v-app>
+        <v-main>
+          <div class="content">
+            <aside class="drawer">
+              <img class="brand-logo" src="images/brand-logo.png" alt="image" />
+              <v-list>
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon>mdi-calendar</v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-title>ประกาศ</v-list-item-title>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon>mdi-phone</v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
+                </v-list-item>
+
+                <v-list-group :value="true" prepend-icon="mdi-android-messages">
+                  <template v-slot:activator>
+                    <v-list-item-title>ข้อความ</v-list-item-title>
+                  </template>
+                  <v-list-item link>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Dashboard</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item link>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Chat</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item link>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Broadcast</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item link>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Auto Reply</v-list-item-title>
+                  </v-list-item>
+
+                  <v-list-item link>
+                    <v-list-item-icon>
+                      <v-icon></v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>Keyword Reply</v-list-item-title>
+                  </v-list-item>
+                </v-list-group>
+              </v-list>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-inbox</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>กล่องรับของ</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-account-multiple</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-phone</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>โฮมแคร์</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-cog</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>ตั้งค่า</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-alert-octagon</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>คู่มือ HSA</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-alert-octagon</v-icon>
+                </v-list-item-icon>
+                <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
+              </v-list-item>
+            </aside>
+            <v-container fluid class="bg-gray-4 p-0">
+              <v-toolbar dense flat>
+                <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
+              </v-toolbar>
+              <v-row>
+                <v-col class="auto-reply-form__container">
+                  <div class="d-flex justify-space-between align-center">
+                    <h1 class="title">Keyword Reply Mode</h1>
+                    <v-switch flat></v-switch>
+                  </div>
+                  <p class="auto-reply-form__description">
+                    By turning this on. You must configure messages in response
+                    to specific keywords.
+                  </p>
+                  <div class="auto-reply-form__card-container">
+                    <v-form class="h-100">
+                      <h4 class="font-weight-500">Primary Keyword</h4>
+                      <v-text-field
+                        v-model="primaryKeyword"
+                        required
+                        placeholder="Enter primary keyword"
+                      ></v-text-field>
+
+                      <h4 class="font-weight-500">Additional Keyword</h4>
+                      <v-text-field
+                        v-model="additionalKeyword"
+                        required
+                        placeholder="Enter keyword"
+                      ></v-text-field>
+
+                      <h4 class="font-weight-500">Message</h4>
+                      <v-textarea
+                        v-model="message"
+                        auto-grow
+                        outlined
+                        placeholder="Input your message"
+                      ></v-textarea>
+
+                      <v-row justify="end" class="mr-1">
+                        <v-btn flat color="primary" @click="submit"
+                          >Create</v-btn
+                        >
+                      </v-row>
+                    </v-form>
+                  </div>
+                </v-col>
+                <v-col sm="4" class="p-0">
+                  <div
+                    class="messages-container"
+                    :class="{ 'messages-container--empty': !replyMessages.length }"
+                  >
+                    <v-row aligns="center">
+                      <v-col>
+                        <h4>Keyword Reply Messages</h4>
+                      </v-col>
+                      <v-col>
+                        <v-btn text color="primary">New Message</v-btn>
+                      </v-col>
+                    </v-row>
+                    <div class="messages-list">
+                      <div
+                        class="reply-message__card"
+                        color="primary"
+                        v-for="replyMessage in replyMessages"
+                        :key="replyMessage.title"
+                      >
+                        {{ replyMessage.title }}
+                        <v-icon color="white">mdi-delete</v-icon>
+                      </div>
+                    </div>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
+          </div>
+        </v-main>
+      </v-app>
+    </div>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/vuetify.min.js"></script>
+    <script src="javascripts/keyword-reply.js"></script>
+  </body>
+</html>

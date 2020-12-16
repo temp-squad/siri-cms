@@ -1,0 +1,69 @@
+.messages-container {
+  height: 100%;
+  margin-top: 24px;
+  margin-right: 32px;
+  padding: 32px 24px;
+  background: white;
+}
+
+.messages-container--empty {
+  background-image: url("../images/no-message.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.messages-list {
+  height: auto;
+}
+
+.messages-container__new-message-btn {
+  color: var(--primary) !important;
+  font-weight: 500;
+  width: auto;
+  text-align: right;
+}
+
+.reply-message__card {
+  color: white !important;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.auto-reply-form__container {
+  background: white;
+  margin: 24px 24px 0 24px;
+  display: flex;
+  padding: 24px !important;
+  flex-direction: column;
+  height: 100%;
+}
+
+.auto-reply-form__description {
+  font-size: 14px;
+  color: var(--gray-1);
+}
+
+.auto-reply-form__card-container {
+  background: var(--white);
+  border: 1px solid var(--gray-3);
+  border-radius: 2px;
+  padding: 24px;
+  height: 100%;
+}
+
+.auto-reply-form__submit {
+  border-radius: 2px;
+  color: white !important;
+  padding: 4px 16px;
+  background-color: var(--primary);
+  font-weight: 500;
+}
+
+.auto-reply-form__time-picker-container {
+  width: 116px !important;
+  margin-left: 12px;
+  margin-right: 8px;
+}
