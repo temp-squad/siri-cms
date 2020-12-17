@@ -1,16 +1,14 @@
 // ts-check
 
-function ReplyMessage(title, message, days, startTime, endTime) {
-  this.title = title;
-  this.message = message;
-  this.days = days || ["Everyday"];
-  this.startTime = startTime;
-  this.endTime = endTime;
+function KeywordReplyMessage(primaryKeywords, additionalKeywords, message) {
+  this.primaryKeywords = primaryKeywords || [];
+  this.additionalKeywords = additionalKeywords || [];
+  this.message = message || "";
 }
 
 const MODE = {
-  CREATE: "create",
-  EDIT: "edit",
+  CREATE: "Create",
+  EDIT: "Save",
 };
 
 new Vue({
@@ -19,37 +17,63 @@ new Vue({
   data() {
     return {
       mode: MODE.CREATE,
-      startTime: null,
-      startTimeMenu: false,
-      endTime: null,
-      primaryKeyword: "",
-      additionalKeyword: "",
-      message: "",
-      endTimeMenu: false,
       replyMessages: [],
+      selectedIndex: -1,
+      primaryKeywords: null,
+      additionalKeywords: [],
+      message: "",
     };
   },
+
   methods: {
-    submit() {
-      const index = this.replyMessages.findIndex((r) => r.title === this.title);
-      if (index >= 0) {
+    changeMode(mode) {
+      this.mode = mode;
+    },
+    newMessage() {
+      this.primaryKeywords = [],
+      this.additionalKeywords = [],
+      this.message = "",
+      this.selectedIndex = -1,
+
+      this.changeMode(MODE.CREATE);
+    },
+    selectMessage(i) {
+      const replyMessage = this.replyMessages[i];
+      if (!replyMessage) {
         return;
       }
 
-      const replyMessage = new ReplyMessage(
-        this.title,
+      console.log(replyMessage)
+      
+      this.primaryKeywords = replyMessage.primaryKeywords,
+      this.additionalKeywords = replyMessage.additionalKeywords,
+      this.message = replyMessage.message,
+
+      this.selectedIndex = i,
+
+      this.changeMode(MODE.EDIT);
+    },
+    deleteMessage(i) {
+      this.replyMessages = this.replyMessages.filter((_, index) => index !== i);
+
+      this.newMessage();
+    },
+    submit() {
+      const newReplyMessage = new KeywordReplyMessage(
+        this.primaryKeywords,
+        this.additionalKeywords,
         this.message,
-        this.days,
-        this.startTime,
-        this.endTime
       );
 
       if (this.mode === MODE.CREATE) {
-        this.replyMessages.push(replyMessage);
+        this.replyMessages.push(newReplyMessage);
+        this.newMessage();
       }
 
       if (this.mode === MODE.EDIT) {
-        this.replyMessage[index] = replyMessage;
+        this.replyMessages[this.selectedIndex].primaryKeywords = this.primaryKeywords;
+        this.replyMessages[this.selectedIndex].additionalKeywords = this.additionalKeywords;
+        this.replyMessages[this.selectedIndex].message = this.message;
       }
     },
   },

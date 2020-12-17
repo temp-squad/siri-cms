@@ -24,180 +24,218 @@
       <v-app>
         <v-main>
           <div class="content">
-            <aside class="drawer">
-              <img class="brand-logo" src="images/brand-logo.png" alt="image" />
-              <v-list>
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon>mdi-calendar</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-title>ประกาศ</v-list-item-title>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon>mdi-phone</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
-                </v-list-item>
-
-                <v-list-group :value="true" prepend-icon="mdi-android-messages">
-                  <template v-slot:activator>
-                    <v-list-item-title>ข้อความ</v-list-item-title>
-                  </template>
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Dashboard</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Chat</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Broadcast</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Auto Reply</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Keyword Reply</v-list-item-title>
-                  </v-list-item>
-                </v-list-group>
-              </v-list>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-inbox</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>กล่องรับของ</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-account-multiple</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-phone</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>โฮมแคร์</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-cog</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>ตั้งค่า</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-alert-octagon</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>คู่มือ HSA</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-alert-octagon</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
-              </v-list-item>
-            </aside>
             <v-container fluid class="bg-gray-4 p-0">
-              <v-toolbar dense flat>
-                <v-app-bar-nav-icon></v-app-bar-nav-icon>
-                <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
-              </v-toolbar>
-              <v-row>
-                <v-col class="auto-reply-form__container">
-                  <div class="d-flex justify-space-between align-center">
-                    <h1 class="title">Keyword Reply Mode</h1>
-                    <v-switch flat></v-switch>
-                  </div>
-                  <p class="auto-reply-form__description">
-                    By turning this on. You must configure messages in response
-                    to specific keywords.
-                  </p>
-                  <div class="auto-reply-form__card-container">
-                    <v-form class="h-100">
-                      <h4 class="font-weight-500">Primary Keyword</h4>
-                      <v-text-field
-                        v-model="primaryKeyword"
-                        required
-                        placeholder="Enter primary keyword"
-                      ></v-text-field>
+              <v-row class="h-100">
+                <v-col sm="2" class="p-0">
+                  <aside class="drawer">
+                    <img
+                      class="brand-logo"
+                      src="images/brand-logo.png"
+                      alt="image"
+                    />
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-calendar</v-icon>
+                        </v-list-item-icon>
 
-                      <h4 class="font-weight-500">Additional Keyword</h4>
-                      <v-text-field
-                        v-model="additionalKeyword"
-                        required
-                        placeholder="Enter keyword"
-                      ></v-text-field>
+                        <v-list-item-title>ประกาศ</v-list-item-title>
+                      </v-list-item>
 
-                      <h4 class="font-weight-500">Message</h4>
-                      <v-textarea
-                        v-model="message"
-                        auto-grow
-                        outlined
-                        placeholder="Input your message"
-                      ></v-textarea>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-phone</v-icon>
+                        </v-list-item-icon>
 
-                      <v-row justify="end" class="mr-1">
-                        <v-btn flat color="primary" @click="submit"
-                          >Create</v-btn
-                        >
-                      </v-row>
-                    </v-form>
-                  </div>
-                </v-col>
-                <v-col sm="4" class="p-0">
-                  <div
-                    class="messages-container"
-                    :class="{ 'messages-container--empty': !replyMessages.length }"
-                  >
-                    <v-row aligns="center">
-                      <v-col>
-                        <h4>Keyword Reply Messages</h4>
-                      </v-col>
-                      <v-col>
-                        <v-btn text color="primary">New Message</v-btn>
-                      </v-col>
-                    </v-row>
-                    <div class="messages-list">
-                      <div
-                        class="reply-message__card"
-                        color="primary"
-                        v-for="replyMessage in replyMessages"
-                        :key="replyMessage.title"
+                        <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
+                      </v-list-item>
+
+                      <v-list-group
+                        :value="true"
+                        prepend-icon="mdi-android-messages"
                       >
-                        {{ replyMessage.title }}
-                        <v-icon color="white">mdi-delete</v-icon>
+                        <template v-slot:activator>
+                          <v-list-item-title>ข้อความ</v-list-item-title>
+                        </template>
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Dashboard</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Chat</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Broadcast</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Auto Reply</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title class="list-item--active"
+                            >Keyword Reply</v-list-item-title
+                          >
+                        </v-list-item>
+                      </v-list-group>
+                    </v-list>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-inbox</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>กล่องรับของ</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-account-multiple</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-phone</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>โฮมแคร์</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-cog</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>ตั้งค่า</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-alert-octagon</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>คู่มือ HSA</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-alert-octagon</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
+                    </v-list-item>
+                  </aside>
+                </v-col>
+                <v-col sm="10" class="p-0">
+                  <v-toolbar dense flat>
+                    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                    <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
+                  </v-toolbar>
+                  <v-row class="ma-0" style="height: calc(100% - 48px)">
+                    <v-col sm="7" class="pt-6 pb-6 pl-6 pr-0">
+                      <div class="auto-reply-form__container">
+                        <div class="d-flex justify-space-between align-center">
+                          <h1 class="title">Keyword Reply Mode</h1>
+                          <v-switch flat></v-switch>
+                        </div>
+                        <p class="auto-reply-form__description">
+                          By turning this on. You will stop receiving messages
+                          from resident and start sending auto reply messages
+                        </p>
+                        <div class="auto-reply-form__card-container">
+                          <v-form class="h-100">
+                            <h4 class="font-weight-500">Primary keyword</h4>
+                            <v-combobox
+                              v-model="primaryKeywords"
+                              hide-selected
+                              placeholder="Enter primary keyword"
+                              small-chips
+                              hint="You can add only one primary keyword"
+                            >
+                            </v-combobox>
+
+                            <h4 class="font-weight-500">Additional keyword</h4>
+                            <v-combobox
+                              v-model="additionalKeywords"
+                              hide-selected
+                              placeholder="Enter keyword"
+                              multiple
+                              small-chips
+                            >
+                            </v-combobox>
+
+                            <h4 class="font-weight-500 mb-4">Message</h4>
+                            <v-textarea
+                              class="border-gray-3"
+                              v-model="message"
+                              auto-grow
+                              outlined
+                              placeholder="Input your message"
+                            ></v-textarea>
+
+                            <v-row justify="end" class="mr-1">
+                              <div
+                                class="auto-reply-form__submit"
+                                role="button"
+                                @click="submit"
+                              >
+                                {{ mode }}
+                              </div>
+                            </v-row>
+                          </v-form>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </v-col>
+                    <v-col sm="5" class="pt-6 pb-6 pl-6 pr-8">
+                      <div
+                        class="messages-container"
+                        :class="{ 'messages-container--empty': !replyMessages.length }"
+                      >
+                        <v-row aligns="center">
+                          <v-col>
+                            <h4>Keyword Reply Messages</h4>
+                          </v-col>
+                          <v-col>
+                            <div
+                              class="messages-container__new-message-btn"
+                              role="button"
+                              @click="newMessage"
+                            >
+                              New Message
+                            </div>
+                          </v-col>
+                        </v-row>
+                        <div class="messages-list">
+                          <v-sheet
+                            rounded
+                            class="reply-message__card"
+                            color="primary"
+                            @click="selectMessage(i)"
+                            v-for="(replyMessage, i) in replyMessages"
+                            :key="i"
+                          >
+                            {{ replyMessage.primaryKeywords }}
+                            <v-icon color="white" @click="deleteMessage(i)"
+                              >mdi-delete</v-icon
+                            >
+                          </v-sheet>
+                        </div>
+                      </div>
+                    </v-col>
+                  </v-row>
                 </v-col>
               </v-row>
             </v-container>
