@@ -28,6 +28,7 @@ new Vue({
       endTimeMenu: false,
       replyMessages: [],
       selectedIndex: -1,
+      selectedMenu: 0
     };
   },
   methods: {

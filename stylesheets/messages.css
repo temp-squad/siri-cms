@@ -1,6 +1,7 @@
 .messages-container {
   height: 100%;
-  margin-top: 24px;
+  width: 100%;
+  /* margin-top: 24px; */
   margin-right: 32px;
   padding: 32px 24px;
   background: white;
@@ -34,11 +35,12 @@
 
 .auto-reply-form__container {
   background: white;
-  margin: 24px 24px 0 24px;
+  /* margin-right: 24px; */
   display: flex;
   padding: 24px !important;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
 .auto-reply-form__description {
@@ -66,4 +68,9 @@
   width: 116px !important;
   margin-left: 12px;
   margin-right: 8px;
+}
+
+.border-gray-3 * {
+  border-color: var(--gray-3) !important;
+  border-radius: 2px !important;
 }

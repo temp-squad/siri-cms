@@ -24,321 +24,341 @@
       <v-app>
         <v-main>
           <div class="content">
-            <aside class="drawer">
-              <img class="brand-logo" src="images/brand-logo.png" alt="image" />
-              <v-list>
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon>mdi-calendar</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-title>ประกาศ</v-list-item-title>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-icon>
-                    <v-icon>mdi-phone</v-icon>
-                  </v-list-item-icon>
-
-                  <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
-                </v-list-item>
-
-                <v-list-group
-                  v-model="selectedMenu"
-                  :value="true"
-                  prepend-icon="mdi-android-messages">
-                  <template v-slot:activator>
-                    <v-list-item-title>ข้อความ</v-list-item-title>
-                  </template>
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Dashboard</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Chat</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Broadcast</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title class="">Auto Reply</v-list-item-title>
-                  </v-list-item>
-
-                  <v-list-item link>
-                    <v-list-item-icon>
-                      <v-icon></v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title>Keyword Reply</v-list-item-title>
-                  </v-list-item>
-                </v-list-group>
-              </v-list>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-inbox</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>กล่องรับของ</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-account-multiple</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-phone</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>โฮมแคร์</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-cog</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>ตั้งค่า</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-alert-octagon</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>คู่มือ HSA</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-alert-octagon</v-icon>
-                </v-list-item-icon>
-                <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
-              </v-list-item>
-            </aside>
             <v-container fluid class="bg-gray-4 p-0">
-              <v-toolbar dense flat>
-                <v-app-bar-nav-icon></v-app-bar-nav-icon>
-                <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
-              </v-toolbar>
-              <v-row>
-                <v-col class="auto-reply-form__container">
-                  <div class="d-flex justify-space-between align-center">
-                    <h1 class="title">Auto Reply Mode</h1>
-                    <v-switch flat></v-switch>
-                  </div>
-                  <p class="auto-reply-form__description">
-                    By turning this on. You will stop receiving messages from
-                    resident and start sending auto reply messages
-                  </p>
-                  <div class="auto-reply-form__card-container">
-                    <v-form class="h-100">
-                      <h4 class="font-weight-500">Title Name</h4>
-                      <v-text-field
-                        v-model="title"
-                        required
-                        placeholder="Enter title name"
-                      ></v-text-field>
+              <v-row class="h-100">
+                <v-col sm="2" class="p-0">
+                  <aside class="drawer">
+                    <img
+                      class="brand-logo"
+                      src="images/brand-logo.png"
+                      alt="image"
+                    />
+                    <v-list>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-calendar</v-icon>
+                        </v-list-item-icon>
 
-                      <h4 class="font-weight-500 mb-4">Message</h4>
-                      <v-textarea
-                        v-model="message"
-                        auto-grow
-                        outlined
-                        placeholder="Enter your message"
-                      ></v-textarea>
+                        <v-list-item-title>ประกาศ</v-list-item-title>
+                      </v-list-item>
 
-                      <h4 class="font-weight-500">
-                        Select Day to Send Message
-                      </h4>
-                      <v-row>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Everyday"
-                            value="Everyday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Monday"
-                            value="Monday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Tuesday"
-                            value="Tuesday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Wednesday"
-                            value="Wednesday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Thursday"
-                            value="Thursday"
-                          ></v-checkbox>
-                        </v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Friday"
-                            value="Friday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Saturday"
-                            value="Saturday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col>
-                          <v-checkbox
-                            v-model="days"
-                            label="Sunday"
-                            value="Sunday"
-                          ></v-checkbox>
-                        </v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                      </v-row>
-                      <h4 class="font-weight-500">
-                        Select time to Send Message
-                      </h4>
-                      <v-row>
-                        <div class="auto-reply-form__time-picker-container">
-                          <v-menu
-                            ref="startTimeMenu"
-                            v-model="startTimeMenu"
-                            :close-on-content-click="false"
-                            :nudge-right="40"
-                            :return-value.sync="startTimeMenu"
-                            transition="scale-transition"
-                            offset-y
-                            max-width="290px"
-                            min-width="290px"
-                          >
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-text-field
-                                v-model="startTime"
-                                label="Start time"
-                                prepend-icon="mdi-clock-time-four-outline"
-                                readonly
-                                v-bind="attrs"
-                                v-on="on"
-                              ></v-text-field>
-                            </template>
-                            <v-time-picker
-                              v-if="startTimeMenu"
-                              v-model="startTime"
-                              full-width
-                              @click:minute="$refs.startTimeMenu.save(startTime)"
-                            ></v-time-picker>
-                          </v-menu>
-                        </div>
-                        <div class="auto-reply-form__time-picker-container">
-                          <v-menu
-                            ref="endTimeMenu"
-                            v-model="endTimeMenu"
-                            :close-on-content-click="false"
-                            :nudge-right="40"
-                            :return-value.sync="endTimeMenu"
-                            transition="scale-transition"
-                            offset-y
-                            max-width="290px"
-                            min-width="290px"
-                          >
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-text-field
-                                v-model="endTime"
-                                label="End time"
-                                prepend-icon="mdi-clock-time-four-outline"
-                                readonly
-                                v-bind="attrs"
-                                v-on="on"
-                              ></v-text-field>
-                            </template>
-                            <v-time-picker
-                              v-if="endTimeMenu"
-                              v-model="endTime"
-                              full-width
-                              @click:minute="$refs.endTimeMenu.save(endTime)"
-                            ></v-time-picker>
-                          </v-menu>
-                        </div>
-                      </v-row>
+                      <v-list-item>
+                        <v-list-item-icon>
+                          <v-icon>mdi-phone</v-icon>
+                        </v-list-item-icon>
 
-                      <v-row justify="end" class="mr-1">
-                        <div
-                          class="auto-reply-form__submit"
-                          role="button"
-                          @click="submit"
-                        >
-                          {{ mode }}
-                        </div>
-                      </v-row>
-                    </v-form>
-                  </div>
-                </v-col>
-                <v-col sm="4" class="p-0">
-                  <div
-                    class="messages-container"
-                    :class="{ 'messages-container--empty': !replyMessages.length }"
-                  >
-                    <v-row aligns="center">
-                      <v-col>
-                        <h4>Auto Reply Messages</h4>
-                      </v-col>
-                      <v-col>
-                        <div
-                          class="messages-container__new-message-btn"
-                          role="button"
-                          @click="newMessage"
-                        >
-                          New Message
-                        </div>
-                      </v-col>
-                    </v-row>
-                    <div class="messages-list">
-                      <v-sheet
-                        rounded
-                        class="reply-message__card"
-                        color="primary"
-                        @click="selectMessage(i)"
-                        v-for="(replyMessage, i) in replyMessages"
-                        :key="replyMessage.title"
+                        <v-list-item-title>สมุดโทรศัพท์</v-list-item-title>
+                      </v-list-item>
+
+                      <v-list-group
+                        :value="true"
+                        prepend-icon="mdi-android-messages"
                       >
-                        {{ replyMessage.title }}
-                        <v-icon color="white" @click="deleteMessage(i)"
-                          >mdi-delete</v-icon
-                        >
-                      </v-sheet>
-                    </div>
-                  </div>
+                        <template v-slot:activator>
+                          <v-list-item-title>ข้อความ</v-list-item-title>
+                        </template>
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Dashboard</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Chat</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Broadcast</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title class="list-item--active"
+                            >Auto Reply</v-list-item-title
+                          >
+                        </v-list-item>
+
+                        <v-list-item link>
+                          <v-list-item-icon>
+                            <v-icon></v-icon>
+                          </v-list-item-icon>
+                          <v-list-item-title>Keyword Reply</v-list-item-title>
+                        </v-list-item>
+                      </v-list-group>
+                    </v-list>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-inbox</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>กล่องรับของ</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-account-multiple</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>ข้อมูลลูกบ้าน</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-phone</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>โฮมแคร์</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-cog</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>ตั้งค่า</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-alert-octagon</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>คู่มือ HSA</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-icon>
+                        <v-icon>mdi-alert-octagon</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-title>แจ้งปัญหาการใช้งาน</v-list-item-title>
+                    </v-list-item>
+                  </aside>
+                </v-col>
+                <v-col sm="10" class="p-0">
+                  <v-toolbar dense flat>
+                    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                    <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
+                  </v-toolbar>
+                  <v-row class="ma-0" style="height: calc(100% - 48px);">
+                    <v-col sm="7" class="pt-6 pb-6 pl-6 pr-0">
+                      <div class="auto-reply-form__container">
+                        <div class="d-flex justify-space-between align-center">
+                          <h1 class="title">Auto Reply Mode</h1>
+                          <v-switch flat></v-switch>
+                        </div>
+                        <p class="auto-reply-form__description">
+                          By turning this on. You will stop receiving messages
+                          from resident and start sending auto reply messages
+                        </p>
+                        <div class="auto-reply-form__card-container">
+                          <v-form class="h-100">
+                            <h4 class="font-weight-500">Title Name</h4>
+                            <v-text-field
+                              v-model="title"
+                              required
+                              placeholder="Enter title name"
+                            ></v-text-field>
+
+                            <h4 class="font-weight-500 mb-4">Message</h4>
+                            <v-textarea
+                              class="border-gray-3"
+                              v-model="message"
+                              auto-grow
+                              outlined
+                              placeholder="Enter your message"
+                            ></v-textarea>
+
+                            <h4 class="font-weight-500">
+                              Select Day to Send Message
+                            </h4>
+                            <v-row>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Everyday"
+                                  value="Everyday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Monday"
+                                  value="Monday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Tuesday"
+                                  value="Tuesday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Wednesday"
+                                  value="Wednesday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Thursday"
+                                  value="Thursday"
+                                ></v-checkbox>
+                              </v-col>
+                            </v-row>
+                            <v-row>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Friday"
+                                  value="Friday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  class="rounded"
+                                  v-model="days"
+                                  label="Saturday"
+                                  value="Saturday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col>
+                                <v-checkbox
+                                  v-model="days"
+                                  label="Sunday"
+                                  value="Sunday"
+                                ></v-checkbox>
+                              </v-col>
+                              <v-col></v-col>
+                              <v-col></v-col>
+                            </v-row>
+                            <h4 class="font-weight-500">
+                              Select time to Send Message
+                            </h4>
+                            <v-row>
+                              <div
+                                class="auto-reply-form__time-picker-container"
+                              >
+                                <v-menu
+                                  ref="startTimeMenu"
+                                  v-model="startTimeMenu"
+                                  :close-on-content-click="false"
+                                  :nudge-right="40"
+                                  :return-value.sync="startTimeMenu"
+                                  transition="scale-transition"
+                                  offset-y
+                                  max-width="290px"
+                                  min-width="290px"
+                                >
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field
+                                      v-model="startTime"
+                                      label="Start time"
+                                      prepend-icon="mdi-clock-time-four-outline"
+                                      readonly
+                                      v-bind="attrs"
+                                      v-on="on"
+                                    ></v-text-field>
+                                  </template>
+                                  <v-time-picker
+                                    v-if="startTimeMenu"
+                                    v-model="startTime"
+                                    full-width
+                                    @click:minute="$refs.startTimeMenu.save(startTime)"
+                                  ></v-time-picker>
+                                </v-menu>
+                              </div>
+                              <div
+                                class="auto-reply-form__time-picker-container"
+                              >
+                                <v-menu
+                                  ref="endTimeMenu"
+                                  v-model="endTimeMenu"
+                                  :close-on-content-click="false"
+                                  :nudge-right="40"
+                                  :return-value.sync="endTimeMenu"
+                                  transition="scale-transition"
+                                  offset-y
+                                  max-width="290px"
+                                  min-width="290px"
+                                >
+                                  <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field
+                                      v-model="endTime"
+                                      label="End time"
+                                      prepend-icon="mdi-clock-time-four-outline"
+                                      readonly
+                                      v-bind="attrs"
+                                      v-on="on"
+                                    ></v-text-field>
+                                  </template>
+                                  <v-time-picker
+                                    v-if="endTimeMenu"
+                                    v-model="endTime"
+                                    full-width
+                                    @click:minute="$refs.endTimeMenu.save(endTime)"
+                                  ></v-time-picker>
+                                </v-menu>
+                              </div>
+                            </v-row>
+
+                            <v-row justify="end" class="mr-1">
+                              <div
+                                class="auto-reply-form__submit"
+                                role="button"
+                                @click="submit"
+                              >
+                                {{ mode }}
+                              </div>
+                            </v-row>
+                          </v-form>
+                        </div>
+                      </div>
+                    </v-col>
+                    <v-col sm="5" class="pt-6 pb-6 pl-6 pr-8">
+                      <div
+                        class="messages-container"
+                        :class="{ 'messages-container--empty': !replyMessages.length }"
+                      >
+                        <v-row aligns="center">
+                          <v-col>
+                            <h4>Auto Reply Messages</h4>
+                          </v-col>
+                          <v-col>
+                            <div
+                              class="messages-container__new-message-btn"
+                              role="button"
+                              @click="newMessage"
+                            >
+                              New Message
+                            </div>
+                          </v-col>
+                        </v-row>
+                        <div class="messages-list">
+                          <v-sheet
+                            rounded
+                            class="reply-message__card"
+                            color="primary"
+                            @click="selectMessage(i)"
+                            v-for="(replyMessage, i) in replyMessages"
+                            :key="replyMessage.title"
+                          >
+                            {{ replyMessage.title }}
+                            <v-icon color="white" @click="deleteMessage(i)"
+                              >mdi-delete</v-icon
+                            >
+                          </v-sheet>
+                        </div>
+                      </div>
+                    </v-col>
+                  </v-row>
                 </v-col>
               </v-row>
             </v-container>
