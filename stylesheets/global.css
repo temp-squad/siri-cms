@@ -86,3 +86,27 @@
 .pb-6 {
   padding-bottom: 24px;
 }
+
+.v-btn__content {
+  text-transform: capitalize;
+}
+
+.v-btn {
+  border-radius: 2px !important;
+}
+
+.v-btn.theme--light.primary {
+  background-color: var(--primary) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.v-snack__wrapper.theme--dark {
+  background-color: black !important;
+  font-size: 12px;
+  width: 100px !important;
+}
+
+.v-snack__content {
+  padding: 8px 12px !important;
+}

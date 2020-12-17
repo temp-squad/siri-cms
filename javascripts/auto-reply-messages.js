@@ -28,7 +28,9 @@ new Vue({
       endTimeMenu: false,
       replyMessages: [],
       selectedIndex: -1,
-      selectedMenu: 0
+      deleteDialog: false,
+      snackbar: false,
+      snackbarText: ''
     };
   },
   methods: {
@@ -44,6 +46,11 @@ new Vue({
       this.selectedIndex = -1
 
       this.changeMode(MODE.CREATE)
+      this.showSnackBar('Created new keyword reply message')
+    },
+    showSnackBar(text) {
+      this.snackbar = true
+      this.snackbarText = text
     },
     selectMessage(i) {
       const replyMessage = this.replyMessages[i]
@@ -60,10 +67,12 @@ new Vue({
 
       this.changeMode(MODE.EDIT)
     },
-    deleteMessage(i) {
-      this.replyMessages = this.replyMessages.filter((_, index) => index !== i);
+    deleteMessage() {
+      this.replyMessages = this.replyMessages.filter((_, index) => index !== this.selectedIndex);
 
       this.newMessage()
+      this.deleteDialog = false
+      this.showSnackBar('Deleted auto reply message')
     },
     submit() {
       const newReplyMessage = new ReplyMessage(
@@ -77,6 +86,7 @@ new Vue({
       if (this.mode === MODE.CREATE) {
         this.replyMessages.push(newReplyMessage);
         this.newMessage()
+        this.showSnackBar('Created new auto reply message')
       }
 
       if (this.mode === MODE.EDIT) {
@@ -85,6 +95,8 @@ new Vue({
         this.replyMessages[this.selectedIndex].days = this.days
         this.replyMessages[this.selectedIndex].startTime = this.startTime
         this.replyMessages[this.selectedIndex].endTime = this.endTime
+
+        this.showSnackBar(`Saved auto reply message “${this.title}”`)
       }
     },
   },

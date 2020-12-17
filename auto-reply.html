@@ -21,6 +21,28 @@
 
   <body class="bg-gray-4">
     <div id="app">
+      <v-snackbar v-model="snackbar">
+        {{ snackbarText }}
+      </v-snackbar>
+      <v-dialog v-model="deleteDialog" max-width="290">
+        <v-card>
+          <v-card-title class="headline"> Confirm Delete </v-card-title>
+
+          <v-card-text>
+            Are you sure you want to delete this auto reply message?
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn text @click="deleteDialog = false"> Cancel </v-btn>
+
+            <v-btn raised elevation="0" color="primary" @click="deleteMessage">
+              Delete
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-app>
         <v-main>
           <div class="content">
@@ -144,7 +166,7 @@
                     <v-app-bar-nav-icon></v-app-bar-nav-icon>
                     <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
                   </v-toolbar>
-                  <v-row class="ma-0" style="height: calc(100% - 48px);">
+                  <v-row class="ma-0" style="height: calc(100% - 48px)">
                     <v-col sm="7" class="pt-6 pb-6 pl-6 pr-0">
                       <div class="auto-reply-form__container">
                         <div class="d-flex justify-space-between align-center">
@@ -351,7 +373,7 @@
                             :key="replyMessage.title"
                           >
                             {{ replyMessage.title }}
-                            <v-icon color="white" @click="deleteMessage(i)"
+                            <v-icon color="white" @click="deleteDialog = true"
                               >mdi-delete</v-icon
                             >
                           </v-sheet>
