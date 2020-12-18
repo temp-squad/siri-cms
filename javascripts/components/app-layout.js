@@ -15,6 +15,13 @@ Vue.component('app-layout', {
               <v-toolbar dense flat>
                 <v-app-bar-nav-icon></v-app-bar-nav-icon>
                 <v-toolbar-title>เดอะเบส เพชรเกษม</v-toolbar-title>
+                
+                <v-spacer></v-spacer>
+                
+                  <v-icon class="mr-4">mdi-bell</v-icon>
+
+                  <v-icon class="mr-4">mdi-account-box</v-icon>
+                
               </v-toolbar>
               <v-row class="ma-0" style="height: calc(100% - 48px)">
                 <slot></slot>

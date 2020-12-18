@@ -1,0 +1,131 @@
+.title {
+  font-size: 20px;
+  font-weight: 400 !important;
+}
+
+.reply-message {
+  background-color: var(--gray-4);
+  padding: 24px;
+  width: 542px;
+}
+
+.reply-message h2 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.reply-message__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.reply-message__title span {
+  color: var(--gray-1);
+  font-size: 14px;
+}
+
+.reply-message__highlights {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  margin: 21px 0 24px 0;
+}
+
+.reply-message__highlights > div {
+  border-radius: 4px;
+  color: white;
+  padding: 16px;
+  min-width: 235px;
+  text-align: center;
+}
+
+.reply-message__highlights > div:first-child {
+  background: var(--primary);
+}
+
+.reply-message__highlights > div:nth-child(2) {
+  background: var(--gray-1);
+}
+
+.reply-message__highlights > div > div:nth-child(1) {
+  font-size: 12px;
+  /* font-weight: 700; */
+}
+
+.reply-message__highlights > div > div:nth-child(2) {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.reply-message__item {
+  display: flex;
+  padding: 16px 0;
+  justify-content: space-between;
+  border-top: 1px solid var(--gray-3);
+}
+
+.reply-message__item:last-child {
+  padding-bottom: 0;
+}
+
+.reply-message__item-name {
+  font-size: 14px;
+}
+
+.reply-message__item-value {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  color: var(--primary);
+}
+
+.popular {
+  background-color: var(--gray-4);
+}
+
+.popular h2 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 24px 0 16px 0;
+  margin: 0 24px;
+  border-bottom: 1px solid var(--gray-3);
+}
+
+.popular__head {
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-1);
+  font-size: 14px;
+  padding: 12px 24px;
+}
+
+.popular__items {
+  height: 240px;
+  overflow-y: scroll;
+}
+
+.popular__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.popular__item:first-child {
+  color: var(--primary);
+}
+
+.popular__item:nth-child(2n+1) {
+  background: #f4f4f4;
+}
+
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-danger {
+  color: rgba(224, 96, 63, 1);
+}

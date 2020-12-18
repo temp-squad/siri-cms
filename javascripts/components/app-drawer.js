@@ -26,19 +26,24 @@ Vue.component('app-drawer', {
       <template v-slot:activator>
         <v-list-item-title>ข้อความ</v-list-item-title>
       </template>
-      <v-list-item link>
+
+
+      <v-list-item link href="dashboard.html">
         <v-list-item-icon>
           <v-icon></v-icon>
         </v-list-item-icon>
-        <v-list-item-title>Dashboard</v-list-item-title>
+        <v-list-item-title :class="{'list-item--active': currentPath === 'dashboard'}">Dashboard</v-list-item-title>
       </v-list-item>
 
-      <v-list-item link>
+
+
+      <v-list-item link href="chat.html">
         <v-list-item-icon>
           <v-icon></v-icon>
         </v-list-item-icon>
-        <v-list-item-title>Chat</v-list-item-title>
+        <v-list-item-title :class="{'list-item--active': currentPath === 'chat'}">Chat</v-list-item-title>
       </v-list-item>
+
 
       <v-list-item link href="broadcast.html">
         <v-list-item-icon>

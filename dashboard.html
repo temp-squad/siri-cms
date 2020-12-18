@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+
+    <link href="./stylesheets/global.css" rel="stylesheet" />
+    <link href="./stylesheets/colors.css" rel="stylesheet" />
+    <link href="./stylesheets/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="./stylesheets/fonts.css" rel="stylesheet" />
+    <link href="./stylesheets/dashboard.css" rel="stylesheet" />
+    <link href="./stylesheets/vuetify.min.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-gray-4">
+    <div id="app">
+      <app-layout current-path="dashboard">
+        <v-col sm="12" class="h-100 pa-5">
+          <v-sheet class="px-6 pb-6">
+            <div class="d-flex justify-space-between align-center">
+              <h1 class="title">Dashboard</h1>
+              <div class="d-flex">
+                <div style="max-width: 148px; margin-right: 24px;">
+                  <v-menu
+                    v-model="startDateMenu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="startDate"
+                        label="Start date"
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="startDate"
+                      @input="startDateMenu = false"
+                    ></v-date-picker>
+                  </v-menu>
+                </div>
+                <div style="max-width: 148px">
+                  <v-menu
+                    v-model="endDateMenu"
+                    :close-on-content-click="false"
+                    :nudge-right="40"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="endDate"
+                        label="End date"
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="endDate"
+                      @input="endDateMenu = false"
+                    ></v-date-picker>
+                  </v-menu>
+                </div>
+              </div>
+            </div>
+            <v-row>
+              <v-col sm="6">
+                <div class="reply-message">
+                  <div class="reply-message__title">
+                    <h2>Reply Message</h2>
+                    <div class="d-flex">
+                      <span class="mt-2 mr-2">Reply in: </span>
+                      <v-select
+                        dense
+                        v-model="replyInterval"
+                        style="max-width: 84px"
+                        :items="replyIntervals"
+                      ></v-select>
+                    </div>
+                  </div>
+                  <div class="reply-message__highlights">
+                    <div>
+                      <div>All Message</div>
+                      <div>
+                        {{ new Intl.NumberFormat('en-GB').format(allMessage) }}
+                      </div>
+                    </div>
+                    <div>
+                      <div>Admin Reply</div>
+                      <div>
+                        {{ new Intl.NumberFormat('en-GB').format(adminReply) }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="reply-message__item">
+                    <div class="reply-message__item-name">Reply Rate</div>
+                    <div class="reply-message__item-value text-danger">
+                      {{ 98.06 }}%
+                    </div>
+                  </div>
+                  <div class="reply-message__item">
+                    <div class="reply-message__item-name">Reply Speed</div>
+                    <div class="reply-message__item-value">{{ 98.06 }}%</div>
+                  </div>
+                </div>
+              </v-col>
+              <v-col sm="6">
+                <div class="popular">
+                  <h2 class="popular__title">
+                    Popular chat message of customers
+                  </h2>
+                  <div class="popular__head">
+                    <div>Keyword message</div>
+                    <div>Amount</div>
+                  </div>
+                  <div class="popular__items">
+                    <div
+                      class="popular__item"
+                      v-for="keyword in keywords"
+                      :key="keyword.key"
+                    >
+                      <div>{{ keyword.key }}</div>
+                      <div>{{ keyword.value }}</div>
+                    </div>
+                  </div>
+                </div>
+              </v-col>
+            </v-row>
+          </v-sheet>
+        </v-col>
+      </app-layout>
+    </div>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/vuetify.min.js"></script>
+    <script src="javascripts/components/app-drawer.js"></script>
+    <script src="javascripts/components/app-layout.js"></script>
+    <script src="javascripts/dashboard.js"></script>
+  </body>
+</html>

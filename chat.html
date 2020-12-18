@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+
+    <link href="./stylesheets/global.css" rel="stylesheet" />
+    <link href="./stylesheets/colors.css" rel="stylesheet" />
+    <link href="./stylesheets/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="./stylesheets/fonts.css" rel="stylesheet" />
+    <link href="./stylesheets/chat.css" rel="stylesheet" />
+    <link href="./stylesheets/vuetify.min.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-gray-4">
+    <div id="app">
+    <v-snackbar v-model="snackbar"> {{ snackbarText }} </v-snackbar>
+      <v-dialog v-model="dialog" max-width="290">
+        <v-card>
+          <v-card-title class="headline">Complete Case</v-card-title>
+
+          <v-card-text>
+            Do you want to close this case? 
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn text @click="dialog = false"> Cancel </v-btn>
+
+            <v-btn raised elevation="0" color="primary" style="color: white !important;" @click="completeCase">
+              Ok
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <app-layout current-path="chat">
+        <v-col sm="12" class="h-100 pa-5">
+          <v-sheet class="px-6 pb-6">
+            <v-row>
+              <v-col sm="3">
+                <v-text-field
+                  placeholder="ค้นหา"
+                  outlined
+                  prepend-inner-icon="mdi-magnify"
+                ></v-text-field>
+                <v-checkbox label="เลือกทั้งหมด"></v-checkbox>
+                <v-list v-for="houseNumber in houseNumbers" :key="houseNumbers">
+                  <v-list-group>
+                    <template v-slot:activator>
+                      <v-list-item-title class="d-flex justify-space-between">
+                        <span>{{ houseNumber }}</span>
+                        <v-chip class="badge">32</v-chip>
+                      </v-list-item-title>
+                    </template>
+                    <v-list-item v-for="user in users" :key="user">
+                      <v-list-item-title
+                        class="d-flex justify-space-between align-center"
+                      >
+                        <v-checkbox :label="user"></v-checkbox>
+                        <v-chip class="badge">32</v-chip>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list-group>
+                </v-list>
+              </v-col>
+              <v-col sm="9">
+                <div class="d-flex justify-space-between">
+                  <div class="d-flex align-center">
+                    <v-avatar style="background-color: #002554" size="36">
+                      <span class="avatar__text"
+                        >{{ selectedUsernameShort }}</span
+                      >
+                    </v-avatar>
+                    <h1 class="title">{{ selectedUsername }}</h1>
+                  </div>
+                  <v-btn text color="primary" @click="dialog = true">
+                    <v-icon left>mdi-checkbox-marked-circle-outline</v-icon>
+                    Complete Case
+                  </v-btn>
+                </div>
+                <div class="messages">
+                  <div
+                    class="message__container"
+                    :class="{'message__container--user': message.from === 'user', 'message__container--staff': message.from === 'staff'}"
+                    v-for="(message, i) in messages"
+                    :key="i"
+                  >
+                    <div
+                      v-if="message.from === 'system'"
+                      class="d-flex justify-content-center"
+                    >
+                      <div class="message__system">{{ message.body }}</div>
+                    </div>
+
+                    <div
+                      v-else
+                      class="message__body"
+                      :class="{'message__body--user': message.from === 'user', 'message__body--staff': message.from === 'staff', 'message__body--image': message.body.includes('data:image/')}"
+                    >
+                      <img
+                        v-if="message.body.includes('data:image/')"
+                        :src="message.body"
+                        class="message__img"
+                      />
+
+                      <div v-else>{{ message.body }}</div>
+                    </div>
+
+                    <div class="message__sent-at">
+                      <div v-if="message.from === 'staff' && message.isRead">
+                        Read
+                      </div>
+                      <div v-if="message.from !== 'system'">
+                        {{ message.sentAt.toLocaleTimeString('en-GB', { hour:
+                        'numeric', minute: 'numeric' }) }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="messages-form">
+                  <v-icon @click="document.getElementById('file').click()">mdi-image</v-icon>
+                  <input id="file" type="file" hidden>
+                  <img v-if="message.includes('base64')" :src="message" width="100%" height="100%">
+                  <input v-else type="text" placeholder="ข้อความ" v-model="message"></input>
+                  <v-icon @click="sendMessage">mdi-send</v-icon>
+                </div>
+              </v-col>
+            </v-row>
+          </v-sheet>
+        </v-col>
+      </app-layout>
+    </div>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/vuetify.min.js"></script>
+    <script src="javascripts/components/app-drawer.js"></script>
+    <script src="javascripts/components/app-layout.js"></script>
+    <script src="javascripts/chat.js"></script>
+  </body>
+</html>
