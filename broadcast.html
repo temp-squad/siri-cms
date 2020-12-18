@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Broardcast</title>
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+
+    <link href="./stylesheets/global.css" rel="stylesheet" />
+    <link href="./stylesheets/colors.css" rel="stylesheet" />
+    <link href="./stylesheets/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="./stylesheets/fonts.css" rel="stylesheet" />
+    <link href="./stylesheets/broadcast.css" rel="stylesheet" />
+    <link href="./stylesheets/vuetify.min.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-gray-4">
+    <div id="app">
+      <v-snackbar v-model="snackbar"> {{ snackbarText }} </v-snackbar>
+      <v-dialog v-model="dialog" max-width="290">
+        <v-card>
+          <v-card-title class="headline">Broadcast</v-card-title>
+
+          <v-card-text>
+            The broadcast message will be sent immediately. Continue?
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn text @click="dialog = false"> Cancel </v-btn>
+
+            <v-btn raised elevation="0" color="primary" @click="broadcast">
+              Ok
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <app-layout current-path="broadcast">
+        <v-col sm="12" class="h-100">
+          <v-sheet class="pa-4 h-100">
+            <v-tabs v-model="tab">
+              <v-tab>Broadcast</v-tab>
+              <v-tab>Sent</v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+              <v-tab-item>
+                <v-card flat>
+                  <h2 class="title">Boardcast</h2>
+                  <v-card outlined class="pa-5">
+                    <h3>Message</h3>
+                    <v-textarea
+                      class="border-gray-3"
+                      v-model="message"
+                      auto-grow
+                      outlined
+                      placeholder="Enter your message"
+                    ></v-textarea>
+
+                    <h3>Select Resident Role</h3>
+                    <v-row>
+                      <v-col sm="2">
+                        <v-checkbox
+                          :input-value="isSelectedAllResidentRoles"
+                          @click="selectAllResidentRoles"
+                          label="All"
+                        ></v-checkbox>
+                      </v-col>
+
+                      <v-col sm="2">
+                        <v-checkbox
+                          v-model="residentRoles"
+                          label="Owner"
+                          value="Owner"
+                        ></v-checkbox>
+                      </v-col>
+                      <v-col sm="2">
+                        <v-checkbox
+                          v-model="residentRoles"
+                          label="Resident"
+                          value="Resident"
+                        ></v-checkbox>
+                      </v-col>
+                      <v-col sm="2">
+                        <v-checkbox
+                          v-model="residentRoles"
+                          label="Renter"
+                          value="Renter"
+                        ></v-checkbox>
+                      </v-col>
+                    </v-row>
+                    <h3>Select House No.</h3>
+                    <v-radio-group row v-model="houseNumberMode">
+                      <v-row>
+                        <v-col sm="2">
+                          <v-radio label="All" value="All"></v-radio>
+                        </v-col>
+                        <v-col sm="10">
+                          <v-radio label="Custom" value="Custom"></v-radio>
+                          <v-sheet
+                            v-if="houseNumberMode === 'Custom'"
+                            color="gray darken-2 w-100 pa-4 mt-3"
+                            outlined
+                          >
+                            <v-chip
+                              :color="isSelectedAllFloors ? 'primary' : 'default'"
+                              @click="selectAllFloors"
+                              >All floors</v-chip
+                            >
+                            <v-chip
+                              @click="selectFloor(floor)"
+                              :color="selectedFloors.includes(floor) ? 'primary' : 'default'"
+                              class="ma-1"
+                              pill
+                              v-for="floor in floors"
+                              >{{ floor }}</v-chip
+                            >
+                          </v-sheet>
+                          <v-sheet
+                            v-if="houseNumberMode === 'Custom'"
+                            color="gray darken-2 w-100 pa-4"
+                            style="border-top: none"
+                            outlined
+                          >
+                            <p>House No.</p>
+                            <div
+                              class="d-flex flex-wrap"
+                              style="height: 280px; overflow: scroll"
+                            >
+                              <template
+                                v-for="(room, i) in selectableRooms"
+                                :key="room.no"
+                              >
+                                <div class="mr-5">
+                                  <v-checkbox
+                                    v-model="selectedRooms"
+                                    :label="room.no"
+                                    :value="room.no"
+                                  >
+                                  </v-checkbox>
+                                </div>
+                              </template>
+                            </div>
+                          </v-sheet>
+                        </v-col>
+                      </v-row>
+                    </v-radio-group>
+                    <div class="d-flex justify-end">
+                      <v-btn elevation="0" color="primary" @click="submit"
+                        >Submit</v-btn
+                      >
+                    </div>
+                  </v-card>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item >
+                <div class="broadcasts" :class="{'broadcasts--empty': !broadcasts.length}">
+                  <h2 class="title">Sent</h2>
+                  <div>
+                    <v-row>
+                    <v-col sm="6" v-for="broadcast in broadcasts">
+                      <div class="broadcast">
+                        <div class="broadcast__date">
+                          {{broadcast.broadcastedAt.toLocaleDateString('en-GB',
+                          { day: 'numeric', month: 'long', year: 'numeric' }) }}
+                          / {{
+                          broadcast.broadcastedAt.toLocaleTimeString('en-GB', {
+                          hour: 'numeric', minute: 'numeric' }) }}
+                        </div>
+                        <div class="broadcast__body">
+                          {{ broadcast.message }}
+                        </div>
+                        <div class="broadcast__to">
+                          <div v-if="broadcast.toAll">to All Resident</div>
+                          <div v-else>to {{ broadcast.residentRoles.join(', ') }} • {{ broadcast.houseNumbers.map(({ no }) => no).join(', ') }}</div>
+                          <div>by Juristic Chat Admain</div>
+                        </div>
+                      </div>
+                    </v-col>
+                  </v-row>
+                  </div>
+                  
+                </div>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-sheet>
+        </v-col>
+      </app-layout>
+    </div>
+    <script src="javascripts/vue.min.js"></script>
+    <script src="javascripts/vuetify.min.js"></script>
+    <script src="javascripts/components/app-drawer.js"></script>
+    <script src="javascripts/components/app-layout.js"></script>
+    <script src="javascripts/broadcast.js"></script>
+  </body>
+</html>

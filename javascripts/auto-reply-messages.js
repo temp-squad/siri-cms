@@ -46,7 +46,7 @@ new Vue({
       this.selectedIndex = -1
 
       this.changeMode(MODE.CREATE)
-      this.showSnackBar('Created new auto reply message')
+      this.showSnackBar('Created new  reply message')
     },
     showSnackBar(text) {
       this.snackbar = true

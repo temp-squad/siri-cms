@@ -1,0 +1,48 @@
+.title {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 400 !important;
+}
+
+.broadcasts {
+  width: 100% !important;
+}
+
+.broadcasts--empty {
+  background-image: url("../images/no-message.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh !important;
+}
+
+.broadcast {
+  background: var(--gray-4);
+  border-radius: 4px;
+  padding: 24px !important;
+}
+
+.broadcast__date {
+  color: var(--gray-1);
+  font-size: 12px;
+}
+
+.broadcast__body {
+  color: var(--black);
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.broadcast__to {
+  color: var(--gray-1);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.broadcast__to > div:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 235px;
+}

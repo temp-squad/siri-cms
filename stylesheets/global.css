@@ -110,3 +110,12 @@
 .v-snack__content {
   padding: 8px 12px !important;
 }
+
+.mdi.mdi-radiobox-blank.theme--light::before {
+  content: "\F0130";
+}
+
+.mdi.mdi-radiobox-marked.theme--light.primary--text::before {
+  color: var(--primary) !important;
+  content: "\F0133";
+}
